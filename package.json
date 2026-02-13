@@ -1,0 +1,63 @@
+{
+  "name": "@farhanbshafiq/dynamic-card",
+  "version": "4.0.0",
+  "description": "Advanced, framework-agnostic card component with custom colors, gradients, animations, and images. Works everywhere - React, Vue, Angular, or plain HTML",
+  "main": "dist/dynamic-card.min.js",
+  "module": "src/dynamic-card.js",
+  "unpkg": "dist/dynamic-card.min.js",
+  "jsdelivr": "dist/dynamic-card.min.js",
+  "files": [
+    "src/",
+    "dist/",
+    "examples/",
+    "docs/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npm run build:minify",
+    "build:minify": "terser src/dynamic-card.js -o dist/dynamic-card.min.js --compress --mangle --source-map",
+    "dev": "http-server -p 8080 -o /examples",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Tests coming soon\" && exit 0"
+  },
+  "keywords": [
+    "web-component",
+    "card",
+    "ui-component",
+    "vanilla-javascript",
+    "framework-agnostic",
+    "custom-element",
+    "bootstrap-like",
+    "cdn",
+    "dynamic-card",
+    "react",
+    "vue",
+    "angular",
+    "custom-colors",
+    "gradient",
+    "animation",
+    "responsive",
+    "typescript",
+    "github-readme",
+    "customizable",
+    "lightweight"
+  ],
+  "author": "Your Name <farhanbinshafiq@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FarhanBinShafiq/dynamic-card.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FarhanBinShafiq/dynamic-card/issues"
+  },
+  "homepage": "https://github.com/FarhanBinShafiq/dynamic-card#readme",
+  "devDependencies": {
+    "terser": "^5.27.0",
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

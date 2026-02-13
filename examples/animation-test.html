@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation Test - Dynamic Card</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    h1, h2 {
+      color: white;
+      text-align: center;
+    }
+
+    .controls {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 5px;
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .info {
+      background: rgba(255,255,255,0.1);
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    code {
+      background: rgba(0,0,0,0.3);
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: #a8edea;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎭 Animation Test Page</h1>
+
+  <div class="info">
+    <h3>How to Test Animations:</h3>
+    <ol>
+      <li><strong>On Page Load:</strong> All cards below will animate when the page loads</li>
+      <li><strong>Restart Button:</strong> Click "Restart All Animations" to see them again</li>
+      <li><strong>Individual Cards:</strong> Click individual buttons to restart specific animations</li>
+    </ol>
+    <p><strong>Tip:</strong> Open browser DevTools (F12) to slow down animations and see them better!</p>
+  </div>
+
+  <div class="controls">
+    <button onclick="restartAll()" style="background: #4CAF50; color: white; font-weight: bold;">
+      🔄 Restart All Animations
+    </button>
+  </div>
+
+  <h2 style="margin-top: 50px;">All Animation Types:</h2>
+
+  <div class="grid">
+    
+    <!-- Fade Animation -->
+    <dynamic-card 
+      id="fadeCard"
+      title="Fade In"
+      theme="primary"
+      animation="fade"
+      elevation="2"
+    >
+      <p>Smooth fade-in effect</p>
+      <code>animation="fade"</code>
+      <br><br>
+      <button onclick="restart('fadeCard', 'fade')">Restart This</button>
+    </dynamic-card>
+
+    <!-- Slide Animation -->
+    <dynamic-card 
+      id="slideCard"
+      title="Slide In"
+      theme="success"
+      animation="slide"
+      elevation="2"
+    >
+      <p>Slides from the left</p>
+      <code>animation="slide"</code>
+      <br><br>
+      <button onclick="restart('slideCard', 'slide')">Restart This</button>
+    </dynamic-card>
+
+    <!-- Scale Animation -->
+    <dynamic-card 
+      id="scaleCard"
+      title="Scale In"
+      theme="warning"
+      animation="scale"
+      elevation="2"
+    >
+      <p>Scales up from center</p>
+      <code>animation="scale"</code>
+      <br><br>
+      <button onclick="restart('scaleCard', 'scale')">Restart This</button>
+    </dynamic-card>
+
+    <!-- Bounce Animation -->
+    <dynamic-card 
+      id="bounceCard"
+      title="Bounce In"
+      theme="danger"
+      animation="bounce"
+      elevation="2"
+    >
+      <p>Bouncy entrance</p>
+      <code>animation="bounce"</code>
+      <br><br>
+      <button onclick="restart('bounceCard', 'bounce')">Restart This</button>
+    </dynamic-card>
+
+  </div>
+
+  <h2 style="margin-top: 50px;">Different Timings:</h2>
+
+  <div class="grid">
+    
+    <dynamic-card 
+      id="fade1"
+      title="Fast Fade"
+      theme="ocean"
+      animation="fade"
+      elevation="2"
+    >
+      <p>Quick animation (0.6s)</p>
+      <button onclick="restart('fade1', 'fade')">Restart</button>
+    </dynamic-card>
+
+    <dynamic-card 
+      id="slide1"
+      title="Delayed Start"
+      theme="forest"
+      animation="slide"
+      elevation="2"
+      style="animation-delay: 0.3s;"
+    >
+      <p>Starts after 0.3s delay</p>
+      <button onclick="restart('slide1', 'slide')">Restart</button>
+    </dynamic-card>
+
+    <dynamic-card 
+      id="bounce1"
+      title="Long Bounce"
+      theme="sunset"
+      animation="bounce"
+      elevation="2"
+    >
+      <p>Longer duration (0.8s)</p>
+      <button onclick="restart('bounce1', 'bounce')">Restart</button>
+    </dynamic-card>
+
+  </div>
+
+  <h2 style="margin-top: 50px;">Combined with Hover Effects:</h2>
+
+  <div class="grid">
+    
+    <dynamic-card 
+      id="combo1"
+      title="Fade + Lift"
+      theme="primary"
+      animation="fade"
+      hover-effect="lift"
+      elevation="2"
+    >
+      <p>Fades in, lifts on hover</p>
+      <button onclick="restart('combo1', 'fade')">Restart</button>
+    </dynamic-card>
+
+    <dynamic-card 
+      id="combo2"
+      title="Slide + Glow"
+      theme="success"
+      animation="slide"
+      hover-effect="glow"
+      elevation="2"
+    >
+      <p>Slides in, glows on hover</p>
+      <button onclick="restart('combo2', 'slide')">Restart</button>
+    </dynamic-card>
+
+    <dynamic-card 
+      id="combo3"
+      title="Bounce + Scale"
+      theme="info"
+      animation="bounce"
+      hover-effect="scale"
+      elevation="2"
+    >
+      <p>Bounces in, scales on hover</p>
+      <button onclick="restart('combo3', 'bounce')">Restart</button>
+    </dynamic-card>
+
+  </div>
+
+  <div class="info" style="margin-top: 50px;">
+    <h3>🔧 Troubleshooting:</h3>
+    <ul>
+      <li><strong>Animations not showing?</strong> Make sure you've run <code>npm run build</code></li>
+      <li><strong>Too fast to see?</strong> Open DevTools → Performance tab → Set CPU throttling to 4x slowdown</li>
+      <li><strong>Want to change speed?</strong> Edit the animation duration in <code>src/dynamic-card.js</code></li>
+    </ul>
+  </div>
+
+  <!-- Load the component -->
+  <script src="../src/dynamic-card.js"></script>
+
+  <script>
+    // Restart individual animation
+    function restart(cardId, animationType) {
+      const card = document.getElementById(cardId);
+      
+      // Remove animation
+      card.removeAttribute('animation');
+      
+      // Force reflow to reset
+      void card.offsetWidth;
+      
+      // Re-add after tiny delay
+      setTimeout(() => {
+        card.setAttribute('animation', animationType);
+      }, 50);
+    }
+
+    // Restart all animations
+    function restartAll() {
+      const allCards = document.querySelectorAll('dynamic-card[animation]');
+      
+      allCards.forEach(card => {
+        const animType = card.getAttribute('animation');
+        
+        // Remove animation
+        card.removeAttribute('animation');
+        
+        // Force reflow
+        void card.offsetWidth;
+      });
+      
+      // Re-add all after delay
+      setTimeout(() => {
+        allCards.forEach(card => {
+          const animType = card.getAttribute('animation');
+          card.setAttribute('animation', animType);
+        });
+      }, 100);
+    }
+
+    // Auto-restart every 5 seconds (optional - you can remove this)
+    // setInterval(() => {
+    //   console.log('Auto-restarting animations...');
+    //   restartAll();
+    // }, 5000);
+  </script>
+
+</body>
+</html>

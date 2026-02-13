@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Card v2.0 - Advanced Examples</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 3rem;
+    }
+
+    .version {
+      text-align: center;
+      color: rgba(255,255,255,0.9);
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      color: white;
+      font-size: 2rem;
+      margin: 60px 0 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: white;
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    }
+
+    button {
+      padding: 12px 24px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    button:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .code-example {
+      background: rgba(0,0,0,0.3);
+      color: #a8edea;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+
+    .feature-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin: 4px;
+      color: white;
+    }
+
+    .color-picker-demo {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin: 15px 0;
+    }
+
+    input[type="color"] {
+      width: 60px;
+      height: 40px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    label {
+      color: white;
+      font-weight: 500;
+    }
+
+    .interactive-controls {
+      background: rgba(255,255,255,0.1);
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    select, input[type="range"] {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: none;
+      margin-left: 10px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: bold;
+      display: block;
+    }
+
+    .stat-label {
+      opacity: 0.8;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <h1>🎴 Dynamic Card v2.0</h1>
+    <p class="version">Advanced Features & Custom Styling</p>
+
+    <!-- New Features Showcase -->
+    <div style="text-align: center; margin-bottom: 40px;">
+      <span class="feature-badge">✨ Custom Colors</span>
+      <span class="feature-badge">🎨 Gradients</span>
+      <span class="feature-badge">🖼️ Images</span>
+      <span class="feature-badge">🎭 Animations</span>
+      <span class="feature-badge">🎯 Icons</span>
+      <span class="feature-badge">🔧 Fully Customizable</span>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- INTERACTIVE DEMO -->
+    <!-- ============================================ -->
+    <h2 class="section-title">🎮 Interactive Playground</h2>
+    
+    <div class="interactive-controls">
+      <h3 style="color: white; margin-bottom: 20px;">Try Customizing Your Card!</h3>
+      
+      <div class="color-picker-demo">
+        <div>
+          <label>Background:</label>
+          <input type="color" id="bgColor" value="#667eea">
+        </div>
+        <div>
+          <label>Text:</label>
+          <input type="color" id="textColor" value="#ffffff">
+        </div>
+        <div>
+          <label>Border:</label>
+          <input type="color" id="borderColor" value="#764ba2">
+        </div>
+        <div>
+          <label>Animation:</label>
+          <select id="animation">
+            <option value="none">None</option>
+            <option value="fade">Fade In</option>
+            <option value="slide">Slide In</option>
+            <option value="scale">Scale In</option>
+            <option value="bounce">Bounce In</option>
+          </select>
+        </div>
+        <div>
+          <label>Hover:</label>
+          <select id="hoverEffect">
+            <option value="lift">Lift</option>
+            <option value="scale">Scale</option>
+            <option value="glow">Glow</option>
+            <option value="rotate">Rotate</option>
+            <option value="shake">Shake</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <dynamic-card 
+      id="interactiveCard"
+      title="Interactive Card"
+      subtitle="Customize me with the controls above!"
+      bg-color="#667eea"
+      text-color="#ffffff"
+      border-color="#764ba2"
+      border-width="3px"
+      elevation="3"
+      hover-effect="lift"
+      icon="🎨"
+    >
+      <p>Change the colors and see the magic happen! This card updates in real-time.</p>
+      <button>Try Clicking Me!</button>
+    </dynamic-card>
+
+    <!-- ============================================ -->
+    <!-- CUSTOM BACKGROUND COLORS -->
+    <!-- ============================================ -->
+    <h2 class="section-title">🎨 Custom Background Colors</h2>
+    
+    <div class="grid">
+      
+      <dynamic-card 
+        title="Custom Purple" 
+        bg-color="#9b59b6"
+        text-color="#ffffff"
+        elevation="2"
+      >
+        <p>Use any hex color for background!</p>
+        <code style="background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px;">bg-color="#9b59b6"</code>
+      </dynamic-card>
+
+      <dynamic-card 
+        title="Custom Coral" 
+        bg-color="#ff6b81"
+        text-color="#ffffff"
+        elevation="2"
+      >
+        <p>Perfect for attention-grabbing elements.</p>
+        <code style="background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px;">bg-color="#ff6b81"</code>
+      </dynamic-card>
+
+      <dynamic-card 
+        title="Custom Teal" 
+        bg-color="#1dd1a1"
+        text-color="#ffffff"
+        elevation="2"
+      >
+        <p>Great for fresh, modern designs.</p>
+        <code style="background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px;">bg-color="#1dd1a1"</code>
+      </dynamic-card>
+
+    </div>
+
+    <!-- ============================================ -->
+    <!-- CUSTOM GRADIENTS -->
+    <!-- ============================================ -->
+    <h2 class="section-title">🌈 Custom Gradient Backgrounds</h2>
+    
+    <div class="grid">
+      
+      <dynamic-card 
+        gradient-start="#667eea"
+        gradient-end="#764ba2"
+        gradient-direction="135deg"
+        text-color="#ffffff"
+        elevation="3"
+        title="Purple Gradient"
+        icon="💜"
+      >
+        <p>Create beautiful gradients with any colors!</p>
+        <code style="background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px; display: block; margin-top: 10px;">
+          gradient-start="#667eea"<br>
+          gradient-end="#764ba2"
+        </code>
+      </dynamic-card>
+
+      <dynamic-card 
+        gradient-start="#f093fb"
+        gradient-end="#f5576c"
+        gradient-direction="90deg"
+        text-color="#ffffff"
+        elevation="3"
+        title="Pink Sunset"
+        icon="🌅"
+      >
+        <p>Horizontal gradient (90deg)</p>
+        <code style="background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px; display: block; margin-top: 10px;">
+          gradient-direction="90deg"
+        </code>
+      </dynamic-card>
+
+      <dynamic-card 
+        gradient-start="#4facfe"
+        gradient-end="#00f2fe"
+        gradient-direction="180deg"
+        text-color="#ffffff"
+        elevation="3"
+        title="Ocean Blue"
+        icon="🌊"
+      >
+        <p>Vertical gradient (180deg)</p>
+        <code style="background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px; display: block; margin-top: 10px;">
+          gradient-direction="180deg"
+        </code>
+      </dynamic-card>
+
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ANIMATIONS -->
+    <!-- ============================================ -->
+    <h2 class="section-title">🎭 Entrance Animations</h2>
+    <p style="text-align: center; color: white; margin-bottom: 10px;">Scroll down to load animations, or click the button below!</p>
+    <div style="text-align: center; margin-bottom: 20px;">
+      <button onclick="restartAnimations()" style="padding: 12px 30px; font-size: 1.1rem;">
+        🔄 Restart All Animations
+      </button>
+    </div>
+    
+    <div class="grid">
+      
+      <dynamic-card 
+        title="Fade In"
+        theme="primary"
+        animation="fade"
+        elevation="2"
+      >
+        <p>Smooth fade-in effect</p>
+        <code style="background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px;">animation="fade"</code>
+      </dynamic-card>
+
+      <dynamic-card 
+        title="Slide In"
+        theme="success"
+        animation="slide"
+        elevation="2"
+      >
+        <p>Slides in from the left</p>
+        <code style="background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px;">animation="slide"</code>
+      </dynamic-card>
+
+      <dynamic-card 
+        title="Scale In"
+        theme="warning"
+        animation="scale"
+        elevation="2"
+      >
+        <p>Scales up from center</p>
+        <code style="background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px;">animation="scale"</code>
+      </dynamic-card>
+
+      <dynamic-card 
+        title="Bounce In"
+        theme="danger"
+        animation="bounce"
+        elevation="2"
+      >
+        <p>Bouncy entrance effect</p>
+        <code style="background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px;">animation="bounce"</code>
+      </dynamic-card>
+
+    </div>
+
+    <!-- ============================================ -->
+    <!-- HOVER EFFECTS -->
+    <!-- ============================================ -->
+    <h2 class="section-title">✨ Hover Effects</h2>
+    <p style="text-align: center; color: white; margin-bottom: 20px;">Hover over cards to see effects!</p>
+    
+    <div class="grid">
+      
+      <dynamic-card 
+        title="Lift Effect"
+        theme="primary"
+        hover-effect="lift"
+        elevation="2"
+      >
+        <p>Lifts up on hover</p>
+        <code style="background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px;">hover-effect="lift"</code>
+      </dynamic-card>
+
+      <dynamic-card 
+        title="Scale Effect"
+        theme="success"
+        hover-effect="scale"
+        elevation="2"
+      >
+        <p>Slightly enlarges on hover</p>
+        <code style="background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px;">hover-effect="scale"</code>
+      </dynamic-card>
+
+      <dynamic-card 
+        title="Glow Effect"
+        theme="info"
+        hover-effect="glow"
+        elevation="2"
+      >
+        <p>Glowing effect on hover</p>
+        <code style="background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px;">hover-effect="glow"</code>
+      </dynamic-card>
+
+      <dynamic-card 
+        title="Rotate Effect"
+        theme="warning"
+        hover-effect="rotate"
+        elevation="2"
+      >
+        <p>Slight rotation on hover</p>
+        <code style="background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px;">hover-effect="rotate"</code>
+      </dynamic-card>
+
+      <dynamic-card 
+        title="Shake Effect"
+        theme="danger"
+        hover-effect="shake"
+        elevation="2"
+      >
+        <p>Shakes on hover</p>
+        <code style="background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px;">hover-effect="shake"</code>
+      </dynamic-card>
+
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ICONS & SUBTITLES -->
+    <!-- ============================================ -->
+    <h2 class="section-title">🎯 Icons & Subtitles</h2>
+    
+    <div class="grid">
+      
+      <dynamic-card 
+        title="Notifications"
+        subtitle="You have 5 new messages"
+        icon="🔔"
+        theme="primary"
+        elevation="2"
+      >
+        <p>Cards can now have icons and subtitles for better context!</p>
+      </dynamic-card>
+
+      <dynamic-card 
+        title="Profile Settings"
+        subtitle="Manage your account"
+        icon="⚙️"
+        theme="dark"
+        elevation="2"
+      >
+        <button>Update Profile</button>
+      </dynamic-card>
+
+      <dynamic-card 
+        title="Sales Report"
+        subtitle="Q4 2024 Performance"
+        icon="📊"
+        theme="success"
+        elevation="2"
+      >
+        <div class="stats">
+          <div><span class="stat-value">$45K</span><span class="stat-label">Revenue</span></div>
+          <div><span class="stat-value">234</span><span class="stat-label">Orders</span></div>
+        </div>
+      </dynamic-card>
+
+    </div>
+
+    <!-- ============================================ -->
+    <!-- IMAGES -->
+    <!-- ============================================ -->
+    <h2 class="section-title">🖼️ Image Positions</h2>
+    
+    <div class="grid grid-2">
+      
+      <dynamic-card 
+        title="Top Image"
+        subtitle="Image above content"
+        image="https://images.unsplash.com/photo-1557683316-973673baf926?w=600"
+        image-position="top"
+        theme="light"
+        elevation="3"
+      >
+        <p>Perfect for blog posts, products, or portfolios!</p>
+        <button>Read More</button>
+        <div class="code-example">image-position="top"</div>
+      </dynamic-card>
+
+      <dynamic-card 
+        title="Bottom Image"
+        subtitle="Image below content"
+        image="https://images.unsplash.com/photo-1550684376-efcbd6e3f031?w=600"
+        image-position="bottom"
+        theme="light"
+        elevation="3"
+      >
+        <p>Great for showcasing products or features!</p>
+        <button>Learn More</button>
+        <div class="code-example">image-position="bottom"</div>
+      </dynamic-card>
+
+      <dynamic-card 
+        title="Background Image"
+        subtitle="Image as background overlay"
+        image="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800"
+        image-position="background"
+        text-color="#ffffff"
+        elevation="4"
+        padding="40px"
+      >
+        <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Hero Card</h2>
+        <p style="font-size: 1.2rem;">Perfect for landing pages and hero sections!</p>
+        <button style="margin-top: 20px; padding: 15px 30px; font-size: 1.1rem;">Get Started</button>
+        <div class="code-example">image-position="background"</div>
+      </dynamic-card>
+
+    </div>
+
+    <!-- ============================================ -->
+    <!-- CUSTOM DIMENSIONS -->
+    <!-- ============================================ -->
+    <h2 class="section-title">📏 Custom Dimensions</h2>
+    
+    <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
+      
+      <dynamic-card 
+        title="Small Card"
+        width="250px"
+        height="200px"
+        theme="primary"
+        elevation="2"
+      >
+        <p>Custom size: 250x200px</p>
+        <div class="code-example">width="250px"<br>height="200px"</div>
+      </dynamic-card>
+
+      <dynamic-card 
+        title="Wide Card"
+        width="600px"
+        theme="success"
+        elevation="2"
+      >
+        <p>Perfect for banners and announcements!</p>
+        <div class="code-example">width="600px"</div>
+      </dynamic-card>
+
+      <dynamic-card 
+        title="Square Card"
+        width="300px"
+        height="300px"
+        theme="warning"
+        elevation="3"
+        style="display: flex; flex-direction: column; justify-content: center;"
+      >
+        <p style="text-align: center; font-size: 1.2rem;">Perfect square!</p>
+        <div class="code-example">width="300px"<br>height="300px"</div>
+      </dynamic-card>
+
+    </div>
+
+    <!-- ============================================ -->
+    <!-- CLICKABLE CARDS -->
+    <!-- ============================================ -->
+    <h2 class="section-title">🖱️ Clickable Cards</h2>
+    
+    <div class="grid">
+      
+      <dynamic-card 
+        id="clickCard1"
+        title="Click Me!"
+        subtitle="I'm clickable"
+        theme="primary"
+        clickable="true"
+        elevation="2"
+        icon="👆"
+      >
+        <p>Click anywhere on this card to trigger an event!</p>
+        <div class="code-example">clickable="true"</div>
+      </dynamic-card>
+
+      <dynamic-card 
+        id="clickCard2"
+        title="Counter Card"
+        subtitle="Clicks: 0"
+        theme="success"
+        clickable="true"
+        elevation="2"
+        icon="🔢"
+      >
+        <p>This card counts how many times you click it!</p>
+      </dynamic-card>
+
+    </div>
+
+    <!-- ============================================ -->
+    <!-- GITHUB README USE CASE -->
+    <!-- ============================================ -->
+    <h2 class="section-title">📝 GitHub README Use Case</h2>
+    
+    <dynamic-card 
+      title="Perfect for GitHub READMEs!"
+      subtitle="Deploy this card on GitHub Pages"
+      bg-color="#24292e"
+      text-color="#ffffff"
+      border-color="#30363d"
+      border-width="2px"
+      elevation="3"
+      icon="🐙"
+      width="100%"
+    >
+      <h3 style="margin: 20px 0 15px 0; color: #58a6ff;">How to Use in GitHub README:</h3>
+      
+      <ol style="line-height: 2;">
+        <li><strong>Create index.html</strong> in your repo with the card code</li>
+        <li><strong>Enable GitHub Pages</strong> in repo Settings</li>
+        <li><strong>Embed the page</strong> in your README using iframe or image</li>
+      </ol>
+
+      <div class="code-example">
+&lt;!-- In your GitHub repo --&gt;<br>
+&lt;script src="https://unpkg.com/@yourusername/dynamic-card@latest"&gt;&lt;/script&gt;<br><br>
+
+&lt;dynamic-card title="My Project" theme="ocean" elevation="3"&gt;<br>
+  &lt;p&gt;Project description here&lt;/p&gt;<br>
+  &lt;button&gt;View Demo&lt;/button&gt;<br>
+&lt;/dynamic-card&gt;
+      </div>
+
+      <button style="margin-top: 20px;">View Example Repo</button>
+    </dynamic-card>
+
+    <!-- ============================================ -->
+    <!-- ALL THEMES -->
+    <!-- ============================================ -->
+    <h2 class="section-title">🎨 All Built-in Themes</h2>
+    
+    <div class="grid">
+      
+      <dynamic-card title="Light" theme="light" elevation="2">
+        <p>Default clean theme</p>
+      </dynamic-card>
+
+      <dynamic-card title="Dark" theme="dark" elevation="2">
+        <p>Dark mode theme</p>
+      </dynamic-card>
+
+      <dynamic-card title="Primary" theme="primary" elevation="2">
+        <p>Purple gradient</p>
+      </dynamic-card>
+
+      <dynamic-card title="Success" theme="success" elevation="2">
+        <p>Green-blue gradient</p>
+      </dynamic-card>
+
+      <dynamic-card title="Warning" theme="warning" elevation="2">
+        <p>Orange gradient</p>
+      </dynamic-card>
+
+      <dynamic-card title="Danger" theme="danger" elevation="2">
+        <p>Red gradient</p>
+      </dynamic-card>
+
+      <dynamic-card title="Info" theme="info" elevation="2">
+        <p>Cyan-pink gradient</p>
+      </dynamic-card>
+
+      <dynamic-card title="Glass" theme="glass" elevation="2">
+        <p>Glassmorphism effect</p>
+      </dynamic-card>
+
+      <dynamic-card title="Glass Dark" theme="glass-dark" elevation="2">
+        <p>Dark glassmorphism</p>
+      </dynamic-card>
+
+      <dynamic-card title="Sunset" theme="sunset" elevation="2">
+        <p>Red-yellow gradient</p>
+      </dynamic-card>
+
+      <dynamic-card title="Ocean" theme="ocean" elevation="2">
+        <p>Deep blue gradient</p>
+      </dynamic-card>
+
+      <dynamic-card title="Forest" theme="forest" elevation="2">
+        <p>Green nature gradient</p>
+      </dynamic-card>
+
+      <dynamic-card title="Aurora" theme="aurora" elevation="2">
+        <p>Blue sky gradient</p>
+      </dynamic-card>
+
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align: center; margin-top: 80px; padding: 40px; color: white;">
+      <h2 style="margin-bottom: 20px;">🚀 Ready to Use?</h2>
+      <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 30px;">
+        Just add the CDN link to your HTML and start building!
+      </p>
+      <div class="code-example" style="max-width: 800px; margin: 0 auto;">
+&lt;script src="https://unpkg.com/@yourusername/dynamic-card@latest/dist/dynamic-card.min.js"&gt;&lt;/script&gt;
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Load the component -->
+  <script src="../src/dynamic-card.js"></script>
+
+  <!-- Interactive Demo JavaScript -->
+  <script>
+    // Animation restart function
+    function restartAnimations() {
+      // Get all cards with animations
+      const animatedCards = document.querySelectorAll('[animation]');
+      
+      animatedCards.forEach(card => {
+        const currentAnimation = card.getAttribute('animation');
+        
+        // Remove and re-add animation attribute to trigger restart
+        card.removeAttribute('animation');
+        
+        // Force reflow
+        void card.offsetWidth;
+        
+        // Re-add animation after a tiny delay
+        setTimeout(() => {
+          card.setAttribute('animation', currentAnimation);
+        }, 50);
+      });
+    }
+
+    // Color picker controls
+    const bgColorPicker = document.getElementById('bgColor');
+    const textColorPicker = document.getElementById('textColor');
+    const borderColorPicker = document.getElementById('borderColor');
+    const animationSelect = document.getElementById('animation');
+    const hoverSelect = document.getElementById('hoverEffect');
+    const interactiveCard = document.getElementById('interactiveCard');
+
+    bgColorPicker.addEventListener('input', (e) => {
+      interactiveCard.setAttribute('bg-color', e.target.value);
+    });
+
+    textColorPicker.addEventListener('input', (e) => {
+      interactiveCard.setAttribute('text-color', e.target.value);
+    });
+
+    borderColorPicker.addEventListener('input', (e) => {
+      interactiveCard.setAttribute('border-color', e.target.value);
+    });
+
+    animationSelect.addEventListener('change', (e) => {
+      interactiveCard.setAttribute('animation', e.target.value);
+    });
+
+    hoverSelect.addEventListener('change', (e) => {
+      interactiveCard.setAttribute('hover-effect', e.target.value);
+    });
+
+    // Clickable card demos
+    const clickCard1 = document.getElementById('clickCard1');
+    clickCard1.addEventListener('card-click', () => {
+      alert('Card clicked! You can use this event to trigger any action.');
+    });
+
+    const clickCard2 = document.getElementById('clickCard2');
+    let clickCount = 0;
+    clickCard2.addEventListener('card-click', () => {
+      clickCount++;
+      clickCard2.setAttribute('subtitle', `Clicks: ${clickCount}`);
+    });
+  </script>
+
+</body>
+</html>
