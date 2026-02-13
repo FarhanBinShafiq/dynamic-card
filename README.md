@@ -1,142 +1,90 @@
-<?xml version="1.0" encoding="UTF-8"?>
+🎴 Dynamic Card v2.0
+<center>
 
-<project>
-  <name>🎴 Dynamic Card v2.0</name>
-  <tagline>
-    The most customizable, framework-agnostic card component for the modern web.
-  </tagline>
+Modern, lightweight, and fully customizable Web Component card system for the modern web.
 
-  <links>
-    <docs>#attributes-reference</docs>
-    <demo>#quick-start</demo>
-    <issues>https://github.com/FarhanBinShafiq/dynamic-card/issues</issues>
-  </links>
+</center>
+Description
 
-  <tableOfContents>
-    <section>Key Features</section>
-    <section>Installation</section>
-    <section>Quick Start</section>
-    <section>Built-in Themes</section>
-    <section>Framework Integration</section>
-    <section>Attributes Reference</section>
-    <section>Development &amp; Contribution</section>
-  </tableOfContents>
+Dynamic Card v2.0 is a lightweight Web Component that allows developers to create highly customizable, animated, and theme-ready cards using pure Vanilla JavaScript.
 
-  <features>
-    <feature>Zero Dependencies – Built with pure Vanilla JavaScript and native Web Components.</feature>
-    <feature>Featherweight – Tiny footprint (under 3KB gzipped).</feature>
-    <feature>Universal – Works with React, Vue, Angular, Svelte, or standard HTML.</feature>
-    <feature>High Performance – Utilizes Shadow DOM for encapsulated styles.</feature>
-    <feature>Customization First – Full control over gradients, animations, and hover effects.</feature>
-  </features>
+It works seamlessly with React, Vue, Angular, Svelte, and standard HTML — with zero dependencies and Shadow DOM encapsulation for optimal performance.
 
-  <installation>
-    <cdn>
-      <description>Place inside &lt;head&gt; or before closing &lt;/body&gt; tag:</description>
-      <script>
-        &lt;script src="https://unpkg.com/@farhanbshafiq/dynamic-card@latest/dist/dynamic-card.min.js"&gt;&lt;/script&gt;
-      </script>
-    </cdn>
+Default Feature Support
+Feature / Property	Support
+Supported environment(s)	HTML, React, Vue, Angular, Svelte
+Zero dependencies	Yes
+Shadow DOM encapsulation	Yes
+Built-in themes	Yes
+Custom gradients	Yes
+Animation effects	Yes
+Hover effects	Yes
+Elevation control	Yes
+How to use
 
-    <npm>
-      <command>npm install @farhanbshafiq/dynamic-card</command>
-      <command>yarn add @farhanbshafiq/dynamic-card</command>
-      <import>import '@farhanbshafiq/dynamic-card';</import>
-    </npm>
-  </installation>
+Install the package via CDN or NPM.
 
-  <quickStart>
-    <example name="Modern Gradient Card">
-      <code>
-        &lt;dynamic-card 
-          title="Advanced Analytics"
-          subtitle="v2.0 Performance"
-          icon="📈"
-          gradient-start="#667eea"
-          gradient-end="#764ba2"
-          text-color="#ffffff"
-          animation="fade"
-          hover-effect="lift"&gt;
+Import the component (if using a framework).
 
-          &lt;p&gt;Our new engine is 40% faster than previous versions.&lt;/p&gt;
-          &lt;button&gt;View Report&lt;/button&gt;
+Add the <dynamic-card> element inside your HTML.
 
-        &lt;/dynamic-card&gt;
-      </code>
-    </example>
+Provide the desired attributes (see below).
 
-    <example name="Glassmorphism Effect">
-      <code>
-        &lt;dynamic-card theme="glass" elevation="3" title="Glass Card"&gt;
-          &lt;p&gt;Perfect for modern UI designs with background images.&lt;/p&gt;
-        &lt;/dynamic-card&gt;
-      </code>
-    </example>
-  </quickStart>
+CDN Usage
 
-  <themes>
-    <theme name="primary">Vibrant purple gradient</theme>
-    <theme name="success">Refreshing green-blue gradient</theme>
-    <theme name="glass">Modern translucent glassmorphism</theme>
-    <theme name="sunset">Warm red-yellow aesthetic</theme>
-    <theme name="ocean">Deep professional blues</theme>
-    <theme name="dark">Sleek dark-mode compatible</theme>
-  </themes>
+Add this script inside your <head> or before closing </body>:
 
-  <frameworkIntegration>
-    <react>
-      <code>
-        import '@farhanbshafiq/dynamic-card';
+<script src="https://unpkg.com/@farhanbshafiq/dynamic-card@latest/dist/dynamic-card.min.js"></script>
 
-        export const MyCard = () => (
-          &lt;dynamic-card title="React Component" theme="primary"&gt;
-            &lt;p&gt;Interoperability at its finest.&lt;/p&gt;
-          &lt;/dynamic-card&gt;
-        );
-      </code>
-    </react>
+NPM Installation
+npm install @farhanbshafiq/dynamic-card
+# or
+yarn add @farhanbshafiq/dynamic-card
 
-    <vue>
-      <code>
-        &lt;template&gt;
-          &lt;dynamic-card title="Vue Integrated" :theme="userTheme"&gt;
-            &lt;p&gt;Static or reactive attributes work natively.&lt;/p&gt;
-          &lt;/dynamic-card&gt;
-        &lt;/template&gt;
 
-        &lt;script setup&gt;
-        import '@farhanbshafiq/dynamic-card';
-        const userTheme = "success";
-        &lt;/script&gt;
-      </code>
-    </vue>
-  </frameworkIntegration>
+Then import:
 
-  <attributesReference>
-    <attribute name="title" type="string">Main heading of the card</attribute>
-    <attribute name="subtitle" type="string">Optional subheading</attribute>
-    <attribute name="icon" type="string">Emoji or icon text</attribute>
-    <attribute name="theme" type="string">Built-in theme name</attribute>
-    <attribute name="gradient-start" type="color">Start gradient color</attribute>
-    <attribute name="gradient-end" type="color">End gradient color</attribute>
-    <attribute name="text-color" type="color">Custom text color</attribute>
-    <attribute name="animation" type="string">fade, slide, etc.</attribute>
-    <attribute name="hover-effect" type="string">lift, glow, scale</attribute>
-    <attribute name="elevation" type="number">Shadow depth (1–5)</attribute>
-  </attributesReference>
+import '@farhanbshafiq/dynamic-card';
 
-  <development>
-    <steps>
-      <step>git clone https://github.com/FarhanBinShafiq/dynamic-card.git</step>
-      <step>npm install</step>
-      <step>npm run dev</step>
-      <step>npm run build</step>
-    </steps>
-  </development>
+Parameters
+Key	Value
+title	Main heading of the card
+subtitle	Optional subheading
+icon	Emoji or icon text
+theme	Built-in theme (primary, success, glass, sunset, ocean, dark)
+gradient-start	Custom gradient start color
+gradient-end	Custom gradient end color
+text-color	Custom text color
+animation	Animation type (fade, slide, etc.)
+hover-effect	Hover effect (lift, glow, scale)
+elevation	Shadow depth level (1–5)
 
-  <support>
-    <message>If this project helped you, please give it a star on GitHub ⭐</message>
-    <author>Made with ❤️ by Farhan</author>
-  </support>
+Example:
 
-</project>
+<dynamic-card 
+  title="Advanced Analytics"
+  subtitle="v2.0 Performance"
+  icon="📈"
+  theme="primary"
+  animation="fade"
+  hover-effect="lift"
+>
+  <p>Our new engine is 40% faster than previous versions.</p>
+</dynamic-card>
+
+Author
+
+Farhan Bin Shafiq
+ <br>
+GitHub: https://github.com/FarhanBinShafiq
+
+More resources
+
+GitHub Repository
+https://github.com/FarhanBinShafiq/dynamic-card
+
+NPM Package
+https://www.npmjs.com/package/@farhanbshafiq/dynamic-card
+
+Issue Tracker
+https://github.com/FarhanBinShafiq/dynamic-card/issues
